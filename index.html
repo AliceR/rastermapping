@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>waterlevel simulation</title>
+
+	<meta charset="utf-8" />
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../lib/leaflet/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="../lib/jquery/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="../lib/jquery/jquery-ui.min.js"></script>
+    <script src="../lib/leaflet/leaflet.js"></script>
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
+    <script>
+    	$(document).ready(function () {
+    		if(jQuery.browser.msie) alert('Sorry, this application is not supported by Internet Explorer.\nUse Google Chrome or Mozilla Firefox instead');
+
+    		$( "#slider" ).slider({min:-15,max:200,
+    			value: 0,
+    			slide: function( event, ui ) {
+    				$( "#sliderlabel" ).val( ui.value );
+    				changeColor(ui.value);
+    				hash.onMapMove();
+    			},
+
+    		});
+    		$( "#slider2" ).slider({min:0,max:1,
+    			value: 0.4,
+    			step: 0.1,
+    			slide: function( event, ui ) {
+    				setOpacity(ui.value);
+    			}
+
+    		});
+
+    		$( "#sliderlabel" ).val( $( "#slider" ).slider( "values", 0 ) );
+
+    		$('.searchbutton').click(function(){
+    			geocode();
+
+    			return false;
+    		});
+    		$('#searchform').submit(function(){
+    			geocode();
+
+    			return false;
+    		});
+    		$('.footnote').click(function(){
+    			$('#footnotediv').toggle('slide');
+    		});
+    	});
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+	<div id="map" style="width: 100%; height: 100%; display:block;left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute;"></div>
+	<div id='sidepanel'>
+		<div id="content">
+			<h1>Interactive Raster viewer</h1>
+			<div class="subtitle">Waterlevel</div>
+			<p>
+				Show waterlevel <br/>
+				<input type="text" id="sliderlabel" size="3" value=""/> m above N.N.
+			</p>
+			<div id="slider" title="Slide to view the waterlevel at a certain height"></div>
+
+
+			<div class="subtitle">Legend</div>
+			<p>
+				<table>
+					<tr>
+						<td><span class="legenditem bg1">&nbsp;</span> < 20</td><td><span class="legenditem bg5">&nbsp;</span> 500 - 700 <br/></td>
+					</tr><tr>
+						<td><span class="legenditem bg2">&nbsp;</span> 20 - 150 </td><td><span class="legenditem bg6">&nbsp;</span> 700 - 900 <br/></td>
+					</tr><tr>
+						<td><span class="legenditem bg3">&nbsp;</span> 150 - 300 </td><td><span class="legenditem bg7">&nbsp;</span> 900 - 1300 <br/></td>
+					</tr><tr>
+						<td><span class="legenditem bg4">&nbsp;</span> 300 - 500 </td><td><span class="legenditem bg8">&nbsp;</span> > 1300 <br/></td>
+					</tr>
+				</table>
+			</p>
+			<div class="subtitle">Basemap</div>
+				<p>Set basemap opacity:</p>
+			<div id="slider2"  title="Slide to change the basemap opacity"></div>
+
+			</div>	
+			<hr/>
+			<div id="footnotediv">Demo version. Terrain data: Jarvis A., H.I. Reuter, A.  Nelson, E. Guevara, 2008, Hole-filled  seamless SRTM data V4, International  Centre for Tropical  Agriculture (CIAT), available  from http://srtm.csi.cgiar.org. </div>
+		</div>
+	</div>
+
+	<script src="scriptv2.js"></script>
+
+</body>
+</html>
