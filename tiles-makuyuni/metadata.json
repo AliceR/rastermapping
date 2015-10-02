@@ -1,0 +1,11 @@
+{
+    "attribution": "", 
+    "description": "", 
+    "center": "36.1931,-2.943,7", 
+    "bounds": "35.0945,-6.2279,37.3357,-0.0879", 
+    "minzoom": "0", 
+    "version": "1.0.0", 
+    "template": "", 
+    "maxzoom": "15", 
+    "name": "Rastermapping"
+}
