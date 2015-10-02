@@ -35,7 +35,7 @@ h1 {
 	display: block;
 	position: absolute;
 	float: left;
-	width: 260px;
+	width: 360px;
 
 	top: 20px;
 	right:20px;
@@ -55,7 +55,7 @@ h1 {
 	background: none;
 	border:0;
 	color:#eeeeee;
-	margin: 0 -40px 0 10px;
+	margin: 0 -15px 0 10px;
 }
 
 .bg1 {background: #709959;}
@@ -65,7 +65,7 @@ h1 {
 .bg5 {background: #e3b684;}
 .bg6 {background: #c7927d;}
 .bg7 {background: #e0b1b8;}
-.bg8 {background: #fff2ff;}
+.bg0 {background: transparent;}
 
 .cl1 {color: #709959;}
 .cl2 {color: #bbcc83;}
