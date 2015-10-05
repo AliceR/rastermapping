@@ -68,8 +68,7 @@
 	<div id="map" style="width: 100%; height: 100%; display:block;left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute;"></div>
 	<div id='sidepanel'>
 		<div id="content">
-			<h1>Interactive Raster viewer</h1>
-			<div class="subtitle">Waterlevel</div>
+			<h1>Interactive Waterlevel Viewer</h1>
 			<p>
 				Show waterlevel at 
 				<input type="text" id="sliderlabel" size="3" value="" class="cl1" />     m
@@ -78,26 +77,24 @@
 
 
 			<div class="subtitle">Legend</div>
-			<p>
-				<table>
-					<tr>
-						<td><span class="legenditem bg1">&nbsp;</span> < 1000 m</td><td><span class="legenditem bg5">&nbsp;</span> 1800m - 2200m <br/></td>
-					</tr><tr>
-						<td><span class="legenditem bg2">&nbsp;</span> 1000m - 1300m </td><td><span class="legenditem bg6">&nbsp;</span> 2200m - 2500m <br/></td>
-					</tr><tr>
-						<td><span class="legenditem bg3">&nbsp;</span> 1300m - 1500m </td><td><span class="legenditem bg7">&nbsp;</span> > 2500 <br/></td>
-					</tr><tr>
-						<td><span class="legenditem bg4">&nbsp;</span> 1500m - 1800m </td><td><span class="legenditem bg0">&nbsp;</span> no height data <br/></td>
-					</tr>
-				</table>
-			</p>
+			<table>
+				<tr><td><span class="legenditem bg1">&nbsp;</span> < 1000m  		</td></tr>
+				<tr><td><span class="legenditem bg2">&nbsp;</span> 1000m - 1300m	</td></tr>
+				<tr><td><span class="legenditem bg3">&nbsp;</span> 1300m - 1500m	</td></tr>
+				<tr><td><span class="legenditem bg4">&nbsp;</span> 1500m - 1800m	</td></tr>
+				<tr><td><span class="legenditem bg5">&nbsp;</span> 1800m - 2200m	</td></tr>
+				<tr><td><span class="legenditem bg6">&nbsp;</span> 2200m - 2500m	</td></tr>
+				<tr><td><span class="legenditem bg7">&nbsp;</span> > 2500	 		</td></tr>
+				<tr><td><span class="legenditem bg0">&nbsp;</span> no height data	</td></tr>
+			</table>
+			
 			<div class="subtitle">Basemap</div>
 				<p>Set basemap opacity:</p>
 			<div id="slider2"  title="Slide to change the basemap opacity"></div>
 
 		</div>	
 		<hr/>
-		<div id="footnotediv">Demo version. </div>
+		<div id="footnotediv">Alice Rühl</div>
 	</div>
 
 	<div style="z-index: 10001; position:absolute; background-color: white;">
