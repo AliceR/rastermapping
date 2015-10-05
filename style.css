@@ -40,11 +40,11 @@ h1 {
 	top: 20px;
 	right:20px;
 
-	background: #7f8080;
+	background: #cbcccc;
 	padding: 10px;
 	padding-bottom: 0px;
 	font-size: 16px;
-	color:#eeeeee; 
+	color:#2e2f2f; 
 	z-index:10000;
 }
 #slider, #slider2{
@@ -54,7 +54,6 @@ h1 {
 	font-size: 20px;
 	background: none;
 	border:0;
-	color:#eeeeee;
 	margin: 0 -15px 0 10px;
 }
 

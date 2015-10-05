@@ -438,13 +438,18 @@ var colorkey = {
 
 
 // create the map
-var map = new L.Map('map',{maxZoom:16});	
+var map = new L.Map('map',{maxZoom:16});
+
 // background map tiles from external source
-var layer = new L.StamenTileLayer("toner");
+var accessToken = 'pk.eyJ1IjoiY2FydG9saWNlIiwiYSI6ImNpZmR3cGExeDAwZXJ0amx5ZTZpbDR6bjYifQ.dhipV0B_b9422-ArK5e04Q';
+var layer = L.tileLayer('https://api.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=' + accessToken, {
+    attribution: 'Basemap tiles: Mapbox emerald, <a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+});
+
 layer.setOpacity(0.4);
 
 map.setView(new L.LatLng(-2.696,36.705), 7).addLayer(layer);
-atttr = 'DEM: test data, internal use only';
+atttr = 'DEM: SRTM data';
 
 // create a canvas layer on which to draw the data
 var canvasTiles = new L.TileLayer.Canvas( {tms: false, minZoom: 6, maxZoom: 11, attribution: atttr});
@@ -543,39 +548,42 @@ colorPixels = function(canvas) {
 
 changeColor = function(uivalue) {
 	// update the color of the slider label
-/*	var sv = $( "#sliderlabel" );
-	if(uivalue < 20) {
+	var sv = $( "#sliderlabel" );
+	// 2500m - 3000m
+	// 2200m - 2500m
+	// 1800m - 2200m
+	// 1500m - 1800m
+	// 1300m - 1500m
+	// 1000m - 1300m
+	// < 1000m 
+	if(uivalue < 1000) {
 		sv.removeClass('cl2').removeClass('cl3').removeClass('cl4').removeClass('cl5').removeClass('cl6').removeClass('cl7').removeClass('cl8')
 		.addClass('cl1');
 	}
-	if(uivalue >= 20 && uivalue < 150) {
+	if(uivalue >= 1000 && uivalue < 1300) {
 		sv.removeClass('cl1').removeClass('cl3').removeClass('cl4').removeClass('cl5').removeClass('cl6').removeClass('cl7').removeClass('cl8')
 		.addClass('cl2');
 	}
-	if(uivalue >= 150 && uivalue < 300) {
+	if(uivalue >= 1300 && uivalue < 1500) {
 		sv.removeClass('cl1').removeClass('cl2').removeClass('cl4').removeClass('cl5').removeClass('cl6').removeClass('cl7').removeClass('cl8')
 		.addClass('cl3');
 	}
-	if(uivalue >= 300 && uivalue < 500) {
+	if(uivalue >= 1500 && uivalue < 1800) {
 		sv.removeClass('cl1').removeClass('cl2').removeClass('cl3').removeClass('cl5').removeClass('cl6').removeClass('cl7').removeClass('cl8')
 		.addClass('cl4');
 	}
-	if(uivalue >= 500 && uivalue < 700) {
+	if(uivalue >= 1800 && uivalue < 2200) {
 		sv.removeClass('cl1').removeClass('cl2').removeClass('cl3').removeClass('cl4').removeClass('cl6').removeClass('cl7').removeClass('cl8')
 		.addClass('cl5');
 	}
-	if(uivalue >= 700 && uivalue < 900) {
+	if(uivalue >= 2200 && uivalue < 2500) {
 		sv.removeClass('cl1').removeClass('cl2').removeClass('cl3').removeClass('cl4').removeClass('cl5').removeClass('cl7').removeClass('cl8')
 		.addClass('cl6');
 	}
-	if(uivalue >= 900 && uivalue < 1300) {
+	if(uivalue >= 2500 ) {
 		sv.removeClass('cl1').removeClass('cl2').removeClass('cl3').removeClass('cl4').removeClass('cl5').removeClass('cl6').removeClass('cl8')
 		.addClass('cl7');
 	}
-	if(uivalue >= 1300) {
-		sv.removeClass('cl1').removeClass('cl2').removeClass('cl3').removeClass('cl4').removeClass('cl5').removeClass('cl6').removeClass('cl7')
-		.addClass('cl8');
-	}*/
 
 	// update the canvas pixel color
 	var canvi = $("canvas");
