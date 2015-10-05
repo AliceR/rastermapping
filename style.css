@@ -1,33 +1,8 @@
 
-html {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 300;
-}
-a {
-	font-weight: 700;
-	color: #037464;
-}
-hr {
-	background-color: #037464;
-	border: none;
-	height:1px;
-	margin-top: 20px;
-}
-.subtitle {
-	text-align: left;
-	margin: 20px 0 0 0;
-	color: #037464;
-	font-weight: 600;
-	font-size: 18px;
-}
-.logo {
-	text-align: center;
-	margin-top: 20px;
-}
-h1 {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
-	color: #037464;
+#map {
+	width: 100%;
+	height: 550px;
+	display:block;
 }
 
 #sidepanel {

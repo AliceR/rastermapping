@@ -549,13 +549,7 @@ colorPixels = function(canvas) {
 changeColor = function(uivalue) {
 	// update the color of the slider label
 	var sv = $( "#sliderlabel" );
-	// 2500m - 3000m
-	// 2200m - 2500m
-	// 1800m - 2200m
-	// 1500m - 1800m
-	// 1300m - 1500m
-	// 1000m - 1300m
-	// < 1000m 
+
 	if(uivalue < 1000) {
 		sv.removeClass('cl2').removeClass('cl3').removeClass('cl4').removeClass('cl5').removeClass('cl6').removeClass('cl7').removeClass('cl8')
 		.addClass('cl1');
