@@ -25,8 +25,8 @@
     	$(document).ready(function () {
     		if(jQuery.browser.msie) alert('Sorry, this application is not supported by Internet Explorer.\nUse Google Chrome or Mozilla Firefox instead');
 
-    		$( "#slider" ).slider({min:0,max:2500,
-    			value: 0,
+    		$( "#slider" ).slider({min:0,max:3000,
+    			value: 713,
     			slide: function( event, ui ) {
     				$( "#sliderlabel" ).val( ui.value );
     				changeColor(ui.value);
@@ -71,8 +71,8 @@
 			<h1>Interactive Raster viewer</h1>
 			<div class="subtitle">Waterlevel</div>
 			<p>
-				Show waterlevel at <br/>
-				<input type="text" id="sliderlabel" size="3" value=""/>     m
+				Show waterlevel at 
+				<input type="text" id="sliderlabel" size="3" value="" class="cl1" />     m
 			</p>
 			<div id="slider" title="Slide to view the waterlevel at a certain height"></div>
 
