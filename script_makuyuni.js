@@ -592,6 +592,36 @@ setOpacity = function(opac) {
 	layer.setOpacity(opac);
 }
 
+function getColorscheme(c) {
+    return c < 1000 ? '#709959;' :
+           c < 1300 ? '#bbcc83;' :
+           c < 1500 ? '#f2eaa0;' :
+           c < 1800 ? '#f2d88f;' :
+           c < 2200 ? '#e3b684;' :
+           c < 2500 ? '#c7927d;' :
+           c < 3000 ? '#e0b1b8;' :
+                   '#fff2ff;';
+}
+var legend = L.control({position: 'topright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0,1000,1300,1500,1800,2200,2500],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColorscheme(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+
 /*
 
 // maybe I can use this some day for a continuous color ramp

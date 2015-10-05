@@ -5,26 +5,9 @@
 	display:block;
 }
 
-#sidepanel {
-	border: solid 2px #037464;
-	border-radius: 0px;
-	display: block;
-	position: absolute;
-	float: left;
-	width: 300px;
 
-	top: 20px;
-	right:20px;
-
-	background: #cbcccc;
-	padding: 10px;
-	padding-bottom: 0px;
-	font-size: 16px;
-	color:#2e2f2f; 
-	z-index:10000;
-}
 #slider, #slider2{
-	width: 240px;
+	width: 100%;
 }
 #sliderlabel {
 	font-size: 20px;
@@ -51,32 +34,26 @@
 .cl7 {color: #e0b1b8;}
 .cl8 {color: #fff2ff;}
 
-.legenditem {    
-	border: solid 1px black;
-	display: inline-block;
-	width: 20px;
-	height: 13px;
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 21px;
+    height: 13px;
+    float: left;
+    margin-right: 8px;
+    opacity: 1;
+}
 
-	margin-top: 3px;
-	margin-left: 10px;
-	margin-right: 3px;
-}
-td {
-	line-height: 14px;
-}
-h1 {
-	font-size: 20px;
-}
 .leaflet-container {
 	background: #eeeeec !important;
 }
+
 .footnote {
 	color: #037464;
 }
 
-#content {
-	padding: 10px;
-}
 #footnotediv {
 	font-style: italic;
 	font-size: small;
