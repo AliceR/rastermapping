@@ -437,22 +437,18 @@ var colorkey = {
 }
 
 
-// create the map
-var map = new L.Map('map',{maxZoom:16});
-
 // background map tiles from external source
 var accessToken = 'pk.eyJ1IjoiY2FydG9saWNlIiwiYSI6ImNpZmR3cGExeDAwZXJ0amx5ZTZpbDR6bjYifQ.dhipV0B_b9422-ArK5e04Q';
-var layer = L.tileLayer('https://api.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=' + accessToken, {
+var baselayer = L.tileLayer('https://api.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=' + accessToken, {
     attribution: 'Basemap tiles: Mapbox emerald, <a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
 });
 
-layer.setOpacity(0.4);
-
-map.setView(new L.LatLng(-2.696,36.705), 7).addLayer(layer);
-atttr = 'DEM: SRTM data';
+var baseMaps = {
+	"Basemap": baselayer,
+};
 
 // create a canvas layer on which to draw the data
-var canvasTiles = new L.TileLayer.Canvas( {tms: false, minZoom: 6, maxZoom: 11, attribution: atttr});
+var canvasTiles = new L.TileLayer.Canvas( {tms: false, minZoom: 6, maxZoom: 11, attribution: 'DEM: SRTM data'});
 var hash = new L.Hash(map);
 /*
 On initialising a canvas tile, use the drawTile function to loop through each pixel and assign color and alpha values based on the current height and the value of the data.
@@ -496,7 +492,46 @@ canvasTiles.drawTile = function(canvas, tilePoint, zoom) {
 	}
 	img.src= url;
 }
-map.addLayer(canvasTiles);
+
+canvasTiles.setOpacity(0.4);
+
+var overlayMaps = {
+	"DEM": canvasTiles
+};
+
+
+// create the map
+var map = new L.Map('map',{
+	maxZoom:16,
+	layers: [baselayer, canvasTiles]
+});
+map.setView(new L.LatLng(-2.696,36.705), 7);
+
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+// the legend
+var legend = L.control({position: 'topright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0,1000,1300,1500,1800,2200,2500],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColorscheme(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+
 
 //function to color the pixels of the canvas based on the pixel value and the current selected height
 colorPixels = function(canvas) {
@@ -522,7 +557,7 @@ colorPixels = function(canvas) {
 				// if pixel value below encoded hight (slider value translated to 255 pixel range), show it blue
 				else if((colorkey[r+"-"+g+"-"+b]) < lvl) { r = 0; g = 0; bn = 255; a = 255;}
 				// else, show and color the pixel depending on the pixel value
-				else { a = 255;
+				else {
 
 					// classification based on streched pixel value (range from 0 to 255) // 
 					if ((colorkey[r+"-"+g+"-"+b])> 2500)											{r = 224; g = 177; bn = 184;} // 2500m - 3000m
@@ -589,7 +624,7 @@ changeColor = function(uivalue) {
 
 // set the opacity of the background map
 setOpacity = function(opac) {
-	layer.setOpacity(opac);
+	canvasTiles.setOpacity(opac);
 }
 
 function getColorscheme(c) {
@@ -602,25 +637,7 @@ function getColorscheme(c) {
            c < 3000 ? '#e0b1b8;' :
                    '#fff2ff;';
 }
-var legend = L.control({position: 'topright'});
 
-legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0,1000,1300,1500,1800,2200,2500],
-        labels = [];
-
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColorscheme(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    }
-
-    return div;
-};
-
-legend.addTo(map);
 
 /*
 
