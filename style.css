@@ -1,10 +1,8 @@
-
 #map {
 	width: 100%;
 	height: 550px;
 	display:block;
 }
-
 
 #slider, #slider2{
 	width: 100%;
@@ -38,6 +36,7 @@
     line-height: 18px;
     color: #555;
 }
+
 .legend i {
     width: 21px;
     height: 13px;
@@ -46,16 +45,15 @@
     opacity: 1;
 }
 
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
 .leaflet-container {
 	background: #eeeeec !important;
-}
-
-.footnote {
-	color: #037464;
-}
-
-#footnotediv {
-	font-style: italic;
-	font-size: small;
-	text-align: center;
 }

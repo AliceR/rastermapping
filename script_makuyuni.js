@@ -436,7 +436,6 @@ var colorkey = {
 "255-172-0":2529.25
 }
 
-
 // background map tiles from external source
 var accessToken = 'pk.eyJ1IjoiY2FydG9saWNlIiwiYSI6ImNpZmR3cGExeDAwZXJ0amx5ZTZpbDR6bjYifQ.dhipV0B_b9422-ArK5e04Q';
 var baselayer = L.tileLayer('https://api.mapbox.com/v4/mapbox.emerald/{z}/{x}/{y}.png?access_token=' + accessToken, {
@@ -473,7 +472,6 @@ canvasTiles._loadTile= function (tile, tilePoint) {
 	}
 };
 
-
 canvasTiles.drawTile = function(canvas, tilePoint, zoom) {
 	var lvl = getLevel();
 	var ctx = canvas.getContext('2d');
@@ -499,7 +497,6 @@ var overlayMaps = {
 	"DEM": canvasTiles
 };
 
-
 // create the map
 var map = new L.Map('map',{
 	maxZoom:16,
@@ -524,7 +521,7 @@ legend.onAdd = function (map) {
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
             '<i style="background:' + getColorscheme(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+            grades[i] + (grades[i + 1] ? ' m &ndash; ' + grades[i + 1] + ' m<br>' : ' m +');
     }
 
     return div;
