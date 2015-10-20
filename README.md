@@ -89,7 +89,7 @@ A dynamic label is indicating the current height represented by the slider posit
 Technically, the slider is a `<div>`-object which is called from a jQuery script via its ID.
 The script creates the slider with specified minimum and maximum values, sets the label according to the current value and also changes the value in the URL hash.
 Based on the value of the slider label the pixel below that level are determined.
-For the comparison, the height range needs to be converted to the pixel values = colour values from 0 to 255 encoding the height.
+
 
 ### Chances and Limitations
 
