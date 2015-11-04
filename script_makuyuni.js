@@ -448,7 +448,7 @@ var baseMaps = {
 
 // create a canvas layer on which to draw the data
 var canvasTiles = new L.TileLayer.Canvas( {tms: false, minZoom: 6, maxZoom: 11, attribution: 'DEM: SRTM data'});
-var hash = new L.Hash(map);
+
 /*
 On initialising a canvas tile, use the drawTile function to loop through each pixel and assign color and alpha values based on the current height and the value of the data.
 */     
@@ -506,6 +506,8 @@ map.setView(new L.LatLng(-2.696,36.705), 7);
 
 
 L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+var hash = new L.Hash(map);
 
 
 // the legend
