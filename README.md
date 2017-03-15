@@ -42,8 +42,8 @@ But when using colour RGB, each band can be used to represent data, which extend
 The translation from height to colour value (stretching) can be done using the tool 'gdaldem' of the GDAL library.
 To generate a colour relief map from any GDAL-supported elevation raster:
 
-`# gdaldem color-relief input_dem color_text_file output_color_relief_map
-where color_text_file contains lines of the format "elevation_value red green blue".`
+`# gdaldem color-relief input_dem color_text_file output_color_relief_map`
+where color_text_file contains lines of the format "elevation_value red green blue".
 
 In fact, it is a simple ordered list of all possibly occurring elevation values assigned to individual colours.
 These colours are not supposed to have a visual effect and a meaningful appearance.
