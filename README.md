@@ -73,14 +73,15 @@ This is done using `L.TileLayer.Canvas();` to allow the dynamic change of pixel 
 A function drawTile() loads the tiles from the local directory and assigns a colour to each pixel based on the RGB value of the tile source.
 The colour eventually displayed in the browser is calculated dynamically in a separate function `colorPixels()`.
 Here, the RGB values representing height are classified to be displayed in a way it actually makes sense, visually, to a human viewer.
-For example by using a common colour scheme for elevation maps from green to brown:
-
+For example by using a common colour scheme for elevation maps from green to brown.
 
 This classification is currently statically set and not to be changed by the user.
 Depending on the encoded value, the pixel are assigned to a class and coloured.
 Equally, the legend is created with static coloured boxes and text labels.
 The result so far is a default view of the terrain as a classified colour map.
-Manipulation of Data Representation
+
+### Manipulation of Data Representation
+
 The actual change of the raster data representation happens separately from the default visualization.
 The pixel colour is changed when changing a slider’s position to indicate the sea level accordingly.
 So in this case, everything below slider value should be considered as water, i.e.
